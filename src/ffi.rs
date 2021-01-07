@@ -7,12 +7,12 @@
 
 use std::ptr;
 
-pub use winapi::{LPCSTR, LPCWSTR, LPVOID};
-
-
+pub use winapi::shared::ntdef::{LPCSTR, LPCWSTR };
+pub use winapi::shared::minwindef::LPVOID;
 
 /// MinHook Error Codes.
 #[must_use]
+#[allow(non_camel_case_types)]
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum MH_STATUS {

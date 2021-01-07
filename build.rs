@@ -1,9 +1,9 @@
-extern crate gcc;
+extern crate cc;
 
 use std::env;
 use std::path::Path;
 
-use gcc::Config;
+use cc::Build;
 
 fn main() {
     let root_dir = env::var("CARGO_MANIFEST_DIR").unwrap();
@@ -25,7 +25,7 @@ fn main() {
 
     let src_dir = Path::new(&root_dir).join("src/minhook/src");
 
-    Config::new()
+    Build::new()
            .file(src_dir.join("buffer.c"))
            .file(src_dir.join("hook.c"))
            .file(src_dir.join("trampoline.c"))

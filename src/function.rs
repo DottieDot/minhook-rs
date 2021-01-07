@@ -8,8 +8,6 @@ use std::os::raw::c_void;
 
 use super::Hook;
 
-
-
 /// An untyped function pointer.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct FnPointer(*mut c_void);
@@ -37,8 +35,6 @@ impl fmt::Pointer for FnPointer {
 
 /// Trait representing a function that can be used as a target function or detour function for
 /// hooking.
-#[rustc_on_unimplemented = "The type `{Self}` is not an eligible target function or \
-                            detour function."]
 pub unsafe trait Function: Sized + Copy + Sync + 'static {
     /// Unsafe version of this function.
     type Unsafe: UnsafeFunction<Args = Self::Args, Output = Self::Output>;
@@ -75,8 +71,6 @@ pub unsafe trait UnsafeFunction: Function {}
 
 
 /// Marker trait indicating that the function `Self` can be hooked by the given function `D`.
-#[rustc_on_unimplemented = "The type `{D}` is not a suitable detour function type for a \
-                            target function of type `{Self}`."]
 pub unsafe trait HookableWith<D: Function>: Function {}
 
 unsafe impl<T: Function> HookableWith<T> for T {}

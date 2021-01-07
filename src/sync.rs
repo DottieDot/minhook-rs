@@ -47,7 +47,7 @@ impl<T: Send + Sync> StaticRwCell<T> {
     pub const fn new(value: T) -> StaticRwCell<T> {
         StaticRwCell {
             init: RefCell::new(Some(value)),
-            lock: Lazy::new()
+            lock: Lazy::INIT
         }
     }
 

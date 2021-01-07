@@ -8,18 +8,24 @@ license = "BSD-2-Clause"
 readme = "README.md"
 links = "MinHook"
 build = "build.rs"
+edition = "2018"
 
 [dependencies]
-kernel32-sys = "0.2"
-libc = "0.2"
-winapi = "0.2"
+libc = "0.2.82"
+lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
 
-[dependencies.lazy_static]
-version = "0.2"
-features = ["nightly"]
+[dependencies.winapi]
+version = "0.3.9"
+features = [
+    "ntdef",
+    "minwindef",
+    "winnls",
+    "stringapiset",
+    "winbase"
+]
 
 [build-dependencies]
-gcc = "0.3"
+cc = "1.0.66"
 
 [features]
 increased_arity = []
