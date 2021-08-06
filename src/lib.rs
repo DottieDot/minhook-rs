@@ -3,8 +3,8 @@
 //! wrapper around the [MinHook][minhook] library.
 //!
 //! [minhook]: http://www.codeproject.com/KB/winsdk/LibMinHook.aspx
-#![feature(const_fn,
-           unboxed_closures)]
+#![feature(const_fn_trait_bound)]
+#![feature(unboxed_closures)]
 #![warn(missing_docs)]
 #![allow(unknown_lints)]
 
